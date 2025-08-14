@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class List_of_password extends JScrollPane {
@@ -17,11 +20,11 @@ public class List_of_password extends JScrollPane {
             ((VISIBLE_PANEL_COUNT - 1) * VERTICAL_STRUT_HEIGHT) + 20; // Přidáme trochu místa navíc pro okraj
 
     private final JPanel mainPanel;
-    public static ArrayList<Password> list;
+    private final ArrayList<Password> list;
 
     public List_of_password() {
         this.mainPanel = new JPanel();
-        list = new ArrayList<>();
+        this.list = new ArrayList<>();
         this.mainPanel.setLayout(new BoxLayout(this.mainPanel, BoxLayout.Y_AXIS));
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -33,9 +36,9 @@ public class List_of_password extends JScrollPane {
 
     public void setScrollPane(){
         mainPanel.removeAll();
-        for (int i = 0; i < list.size(); i++) {
-            this.mainPanel.add(list.get(i));
-            if (i < list.size()) { // Přidáme mezeru, jen pokud to není poslední panel
+        for (int i = 0; i < this.list.size(); i++) {
+            this.mainPanel.add(this.list.get(i));
+            if (i < this.list.size()) { // Přidáme mezeru, jen pokud to není poslední panel
                 mainPanel.add(Box.createVerticalStrut(VERTICAL_STRUT_HEIGHT));
             }
         }
@@ -43,9 +46,37 @@ public class List_of_password extends JScrollPane {
         mainPanel.repaint();
     }
 
-    public void addPassword(){
-        this.list.add(new Password("google.com", "filip", "1234567890"));
-        this.list.add(new Password("seznam.cz", "karel", "1234567890"));
+    public void addPassword() {
+        ArrayList<String> passwords = new ArrayList<>();
+        ArrayList<String> websites = new ArrayList<>();
+        ArrayList<String> usernames = new ArrayList<>();
+        try {
+            BufferedReader br1 = new BufferedReader(new FileReader("res\\passwords.txt"));
+            String line;
+            while ((line = br1.readLine()) != null) {
+                passwords.add(line);
+            }
+
+            BufferedReader br2 = new BufferedReader(new FileReader("res\\usernames.txt"));
+            String line2;
+            while ((line2 = br2.readLine()) != null) {
+                usernames.add(line2);
+            }
+
+            BufferedReader br3 = new BufferedReader(new FileReader("res\\websites.txt"));
+            String line3;
+            while ((line3 = br3.readLine()) != null) {
+                websites.add(line3);
+            }
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        int lenght = websites.size();
+        for (int i = 0; i < lenght; i++) {
+            this.add(new Password(websites.get(i), usernames.get(i), passwords.get(i)));
+        }
         setScrollPane();
+        System.out.println(passwords +"\n"+ usernames +"\n"+ websites);
     }
 }

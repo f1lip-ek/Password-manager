@@ -2,12 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class SwitchingPanels extends JPanel {
 
+    private final ListOfPasswords listOfPasswords; //Panel1
     private final SettingProperties settingProperties; //Panel2
     private final GeneratedPassword generatedPassword; //Panel3
-    private final ListOfPasswords listOfPasswords; //Panel1
     private final NewPassword newPassword; //Panel4
     private final CardLayout cardLayout;
 
@@ -77,7 +80,30 @@ public class SwitchingPanels extends JPanel {
         NewPassword.save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
+                    BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt"));
+                    BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt"));
+                    BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt"));
 
+
+                    bw1.newLine();
+                    bw1.write(newPassword.getWebsite().getText());
+                    bw1.flush();
+
+                    bw2.newLine();
+                    bw2.write(newPassword.getUsername().getText());
+                    bw2.flush();
+
+                    bw3.newLine();
+                    bw3.write(newPassword.getPassword().getText());
+                    bw3.flush();
+
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                listOfPasswords.getList_of_password().addPassword();
+                listOfPasswords.getList_of_password().setScrollPane();
+                cardLayout.show(SwitchingPanels.this, "Panel1");
             }
         });
     }

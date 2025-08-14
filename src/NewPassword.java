@@ -79,4 +79,15 @@ public class NewPassword extends JPanel {
         this.buttonsPanel.add(cancel, BorderLayout.EAST);
     }
 
+    public JTextField getWebsite() {
+        return website;
+    }
+
+    public JTextField getUsername() {
+        return username;
+    }
+
+    public JTextField getPassword() {
+        return password;
+    }
 }

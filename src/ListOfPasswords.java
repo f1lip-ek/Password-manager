@@ -14,4 +14,8 @@ public class ListOfPasswords extends JPanel {
         this.add(newPassword, BorderLayout.SOUTH);
     }
 
+    public List_of_password getList_of_password() {
+        return listOfPasswords;
+    }
+
 }
