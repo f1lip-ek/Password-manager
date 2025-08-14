@@ -8,9 +8,9 @@ public class NewPassword extends JPanel {
     private final JTextField username;
     private final JTextField password;
 
-    private final JButton save;
-    private final JButton cancel;
-    private final JButton generateNewPassword;
+    public static JButton save;
+    public static JButton cancel;
+    public static JButton generateNewPassword;
 
     private final JLabel websiteLabel;
     private final JLabel usernameLabel;
@@ -29,9 +29,9 @@ public class NewPassword extends JPanel {
         this.username.setEditable(true);
         this.password = new JTextField();
         this.password.setEditable(true);
-        this.save = new JButton("Save");
-        this.cancel = new JButton("Cancel");
-        this.generateNewPassword = new JButton("Gen. new pass.");
+        save = new JButton("Save");
+        cancel = new JButton("Cancel");
+        generateNewPassword = new JButton("Gen. new pass.");
         this.websiteLabel = new JLabel("Website:");
         this.usernameLabel = new JLabel("Username:");
         this.passwordLabel = new JLabel("Password:");

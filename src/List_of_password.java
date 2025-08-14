@@ -17,11 +17,11 @@ public class List_of_password extends JScrollPane {
             ((VISIBLE_PANEL_COUNT - 1) * VERTICAL_STRUT_HEIGHT) + 20; // Přidáme trochu místa navíc pro okraj
 
     private final JPanel mainPanel;
-    private final ArrayList<Password> list;
+    public static ArrayList<Password> list;
 
     public List_of_password() {
         this.mainPanel = new JPanel();
-        this.list = new ArrayList<>();
+        list = new ArrayList<>();
         this.mainPanel.setLayout(new BoxLayout(this.mainPanel, BoxLayout.Y_AXIS));
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -33,9 +33,9 @@ public class List_of_password extends JScrollPane {
 
     public void setScrollPane(){
         mainPanel.removeAll();
-        for (int i = 0; i < this.list.size(); i++) {
-            this.mainPanel.add(this.list.get(i));
-            if (i < this.list.size()) { // Přidáme mezeru, jen pokud to není poslední panel
+        for (int i = 0; i < list.size(); i++) {
+            this.mainPanel.add(list.get(i));
+            if (i < list.size()) { // Přidáme mezeru, jen pokud to není poslední panel
                 mainPanel.add(Box.createVerticalStrut(VERTICAL_STRUT_HEIGHT));
             }
         }
