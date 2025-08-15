@@ -87,27 +87,9 @@ public class SwitchingPanels extends JPanel {
         NewPassword.save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
-                    BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt"/*, true*/));
-                    BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt"/*, true*/));
-                    BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt"/*, true*/));
 
+                fileWriting();
 
-                    bw1.newLine();
-                    bw1.write(newPassword.getWebsite().getText());
-                    bw1.flush();
-
-                    bw2.newLine();
-                    bw2.write(newPassword.getUsername().getText());
-                    bw2.flush();
-
-                    bw3.newLine();
-                    bw3.write(newPassword.getPassword().getText());
-                    bw3.flush();
-
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
                 listOfPasswords.getList_of_password().addNewPassword(
                         newPassword.getWebsite().getText(),
                         newPassword.getUsername().getText(),
@@ -116,6 +98,30 @@ public class SwitchingPanels extends JPanel {
                 cardLayout.show(SwitchingPanels.this, "Panel1");
             }
         });
+    }
+
+    public void fileWriting(){
+        try{
+            BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt"/*, true*/));
+            BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt"/*, true*/));
+            BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt"/*, true*/));
+
+
+            bw1.newLine();
+            bw1.write(newPassword.getWebsite().getText());
+            bw1.flush();
+
+            bw2.newLine();
+            bw2.write(newPassword.getUsername().getText());
+            bw2.flush();
+
+            bw3.newLine();
+            bw3.write(newPassword.getPassword().getText());
+            bw3.flush();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
