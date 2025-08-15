@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 public class SettingProperties extends JPanel {
 
     public static JButton generatePassword;
+    public static JButton cancel;
     private final JCheckBox upperCase;
     private final JCheckBox lowerCase;
     private final JCheckBox numbers;
@@ -17,6 +18,7 @@ public class SettingProperties extends JPanel {
     public SettingProperties() {
         this.napis = new JLabel("Password generator");
         generatePassword = new JButton("Generate password");
+        cancel = new JButton("Cancel");
         this.upperCase = new JCheckBox("Upper case");
         this.lowerCase = new JCheckBox("Lower case");
         this.numbers = new JCheckBox("Numbers");
@@ -24,12 +26,12 @@ public class SettingProperties extends JPanel {
         this.length = new JTextField("");
         rg = new RandomGenerator();
         this.setLayout(new BorderLayout());
-        this.add(generatePassword, BorderLayout.SOUTH);
-        setPanel();
-        setPanel1();
+        setPanelCheckBoxes();
+        setPanelLenght();
+        setPanelButton();
     }
 
-    public void setPanel(){
+    public void setPanelCheckBoxes(){
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(4, 1));
         panel.add(upperCase);
@@ -41,7 +43,7 @@ public class SettingProperties extends JPanel {
         setDefault();
     }
 
-    public void setPanel1(){
+    public void setPanelLenght(){
         JPanel panel1 = new JPanel();
         panel1.setLayout(new BorderLayout());
         panel1.add(napis, BorderLayout.NORTH);
@@ -55,6 +57,14 @@ public class SettingProperties extends JPanel {
                 }
             }
         });
+    }
+
+    public void setPanelButton(){
+        JPanel panelButton = new JPanel();
+        panelButton.setLayout(new GridLayout(1, 2));
+        panelButton.add(cancel);
+        panelButton.add(generatePassword);
+        this.add(panelButton, BorderLayout.SOUTH);
     }
 
     public void setParameters(){

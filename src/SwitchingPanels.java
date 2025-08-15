@@ -47,6 +47,13 @@ public class SwitchingPanels extends JPanel {
             }
         });
 
+        SettingProperties.cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(SwitchingPanels.this, "Panel4");
+            }
+        });
+
         GeneratedPassword.goBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,9 +88,9 @@ public class SwitchingPanels extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt", true));
-                    BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt", true));
-                    BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt", true));
+                    BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt"/*, true*/));
+                    BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt"/*, true*/));
+                    BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt"/*, true*/));
 
 
                     bw1.newLine();
