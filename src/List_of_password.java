@@ -7,17 +7,17 @@ import java.util.ArrayList;
 
 public class List_of_password extends JScrollPane {
 
-    // Výška jednoho panelu pro výpočet preferované výšky
+    // Height of 1 panel for calculation preferred height
     public static final int PANEL_HEIGHT = 25;
-    // Mezera mezi panely
+    // Free space between panels
     public static final int VERTICAL_STRUT_HEIGHT = 10;
-    // Počet panelů, které mají být viditelné bez rolování
+    // Num of panels, which have to be visible without rolling
     public static final int VISIBLE_PANEL_COUNT = 10;
 
-    // Vypočítáme preferovanou výšku pro JScrollPane
-    // (Visible panely * výška panelu) + (počet mezer * výška mezery) + malý padding
+    // We calculate the preferred height for the JScrollPane
+    // (Visible panels * panel height) + (num of spaces * height of space) + small padding
     int preferredScrollPanelHeight = (VISIBLE_PANEL_COUNT * PANEL_HEIGHT) +
-            ((VISIBLE_PANEL_COUNT - 1) * VERTICAL_STRUT_HEIGHT) + 20; // Přidáme trochu místa navíc pro okraj
+            ((VISIBLE_PANEL_COUNT - 1) * VERTICAL_STRUT_HEIGHT) + 20; // We add a little extra space for the margin
 
     public final JPanel mainPanel;
     private final ArrayList<Password> list;
@@ -38,7 +38,7 @@ public class List_of_password extends JScrollPane {
         mainPanel.removeAll();
         for (int i = 0; i < this.list.size(); i++) {
             this.mainPanel.add(this.list.get(i));
-            if (i < this.list.size()) { // Přidáme mezeru, jen pokud to není poslední panel
+            if (i < this.list.size()) { // Add a space only if it is not the last panel
                 mainPanel.add(Box.createVerticalStrut(VERTICAL_STRUT_HEIGHT));
             }
         }
@@ -76,8 +76,8 @@ public class List_of_password extends JScrollPane {
             System.out.println(e.getMessage());
         }
         setScrollPane();
-        int lenght = websites.size();
-        for (int i = 0; i < lenght; i++) {
+        int length = websites.size();
+        for (int i = 0; i < length; i++) {
             this.list.add(new Password(websites.get(i), usernames.get(i), passwords.get(i)));
         }
         setScrollPane();
