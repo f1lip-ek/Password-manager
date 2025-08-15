@@ -44,81 +44,81 @@ public class RandomGenerator {
     public void categoryChecker(){
     /*0*/if(user.isUpperCase() && user.isLowerCase() && user.isNumbers() && user.isSpecial()){
         switch (randomNum) {
-            case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-            case 1 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
-            case 2 -> password += chars.getRandomChar(chars.getCisla());
-            case 3 -> password += chars.getRandomChar(chars.getZnaky());
+            case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+            case 1 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
+            case 2 -> password += chars.getRandomChar(chars.getNumbers());
+            case 3 -> password += chars.getRandomChar(chars.getSpecialCharacters());
         }
     /*1*/} else if (user.isUpperCase() && user.isLowerCase() && user.isNumbers() && !user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
-                case 2 -> password += chars.getRandomChar(chars.getCisla());
+                case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
+                case 2 -> password += chars.getRandomChar(chars.getNumbers());
             }
     /*2*/} else if (user.isUpperCase() && user.isLowerCase() && !user.isNumbers() && user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
-                case 2 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
+                case 2 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*3*/} else if (user.isUpperCase() && user.isLowerCase() && !user.isNumbers() && !user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
+                case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
             }
     /*4*/} else if (user.isUpperCase() && !user.isLowerCase() && user.isNumbers() && user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getCisla());
-                case 2 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getNumbers());
+                case 2 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*5*/} else if (user.isUpperCase() && !user.isLowerCase() && user.isNumbers() && !user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getCisla());
-                case 2 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getNumbers());
+                case 2 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*6*/} else if (user.isUpperCase() && !user.isLowerCase() && !user.isNumbers() && user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getUpperCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*7*/} else if (user.isUpperCase() && !user.isLowerCase() && !user.isNumbers() && !user.isSpecial()) {
             if (randomNum == 0) {
-                password += chars.getRandomChar(chars.getAbecedaVelkaPismena());
+                password += chars.getRandomChar(chars.getUpperCaseAlphabet());
             }
     /*8*/} else if (!user.isUpperCase() && user.isLowerCase() && user.isNumbers() && user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getCisla());
-                case 2 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getNumbers());
+                case 2 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*9*/} else if (!user.isUpperCase() && user.isLowerCase() && user.isNumbers() && !user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getCisla());
+                case 0 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getNumbers());
             }
     /*10*/} else if (!user.isUpperCase() && user.isLowerCase() && !user.isNumbers() && user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getAbecedaMalaPismena());
-                case 1 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getLowerCaseAlphabet());
+                case 1 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*11*/} else if (!user.isUpperCase() && user.isLowerCase() && !user.isNumbers() && !user.isSpecial()) {
             if (randomNum == 0) {
-                password += chars.getRandomChar(chars.getAbecedaMalaPismena());
+                password += chars.getRandomChar(chars.getLowerCaseAlphabet());
             }
     /*12*/} else if (!user.isUpperCase() && !user.isLowerCase() && user.isNumbers() && user.isSpecial()) {
             switch (randomNum) {
-                case 0 -> password += chars.getRandomChar(chars.getCisla());
-                case 1 -> password += chars.getRandomChar(chars.getZnaky());
+                case 0 -> password += chars.getRandomChar(chars.getNumbers());
+                case 1 -> password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*13*/} else if (!user.isUpperCase() && !user.isLowerCase() && user.isNumbers() && !user.isSpecial()) {
             if (randomNum == 0) {
-                password += chars.getRandomChar(chars.getCisla());
+                password += chars.getRandomChar(chars.getNumbers());
             }
     /*14*/} else if (!user.isUpperCase() && !user.isLowerCase() && !user.isNumbers() && user.isSpecial()) {
             if (randomNum == 0) {
-                password += chars.getRandomChar(chars.getZnaky());
+                password += chars.getRandomChar(chars.getSpecialCharacters());
             }
     /*15*/} else if (!user.isUpperCase() && !user.isLowerCase() && !user.isNumbers() && !user.isSpecial()) {
             System.out.println("You choose nothing");

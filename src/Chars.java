@@ -5,27 +5,27 @@ public class Chars {
     Random rd = new Random();
 
     /**
-     *  1. Pole s malými a velkými písmeny bez háčků a čárek
+     *  1. Array with small and big letters
      */
-    private final char[] abecedaMalaPismena; // 26 malých
+    private final char[] lowerCaseAlphabet; // 26 malých
 
-    private final char[] abecedaVelkaPismena; // 26 velkych
+    private final char[] upperCaseAlphabet; // 26 velkych
 
     /**
-     * 2. Pole s čísly 0–9
+     * 2. Array with numbers 0-9
       */
-    private final char[] cisla;
+    private final char[] numbers;
 
     /**
-     * 3. Pole se speciálními znaky
+     * 3. Array with special characters
      */
-    private final char[] znaky;
+    private final char[] specialCharacters;
 
     public Chars() {
-        this.abecedaMalaPismena = new char[26];
-        this.abecedaVelkaPismena = new char[26];
-        this.cisla = new char[10];
-        this.znaky = new char[]{
+        this.lowerCaseAlphabet = new char[26];
+        this.upperCaseAlphabet = new char[26];
+        this.numbers = new char[10];
+        this.specialCharacters = new char[]{
                 '.', ',', '!', '?', ':', ';', '-', '_', '(', ')', '[', ']', '{', '}', '@',
                 '#', '$', '%', '^', '&', '*', '+', '=', '/', '\\', '\"', '<', '>', '|', '~'
         };
@@ -33,33 +33,33 @@ public class Chars {
     }
 
     /**
-     * Metoda na naplneni poli abecedy a cisel
+     * Method for filling arrays with alphabet and numbers
      */
     public void setChars() {
         for (int i = 0; i < 26; i++) {
-            abecedaMalaPismena[i] = (char) ('a' + i);         // malé znaky a-z
-            abecedaVelkaPismena[i] = (char) ('A' + i);     // velké znaky A-Z
+            lowerCaseAlphabet[i] = (char) ('a' + i);         // malé znaky a-z
+            upperCaseAlphabet[i] = (char) ('A' + i);     // velké znaky A-Z
         }
 
         for (int i = 0; i < 10; i++) {
-            cisla[i] = (char) ('0' + i);
+            numbers[i] = (char) ('0' + i);
         }
     }
 
-    public char[] getAbecedaMalaPismena() {
-        return abecedaMalaPismena;
+    public char[] getLowerCaseAlphabet() {
+        return lowerCaseAlphabet;
     }
 
-    public char[] getCisla() {
-        return cisla;
+    public char[] getNumbers() {
+        return numbers;
     }
 
-    public char[] getZnaky() {
-        return znaky;
+    public char[] getSpecialCharacters() {
+        return specialCharacters;
     }
 
-    public char[] getAbecedaVelkaPismena() {
-        return abecedaVelkaPismena;
+    public char[] getUpperCaseAlphabet() {
+        return upperCaseAlphabet;
     }
 
     public char getRandomChar(char[] znak){
