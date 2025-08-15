@@ -46,37 +46,40 @@ public class NewPassword extends JPanel {
         setPasswordPanel();
         setButtonsPanel();
 
-        this.setLayout(new GridLayout(5, 1));
-        this.add(title);
-        this.add(websitePanel);
-        this.add(usernamePanel);
-        this.add(passwordPanel);
-        this.add(buttonsPanel);
+        this.setLayout(new BorderLayout());
+        this.add(title, BorderLayout.NORTH);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4, 1));
+        panel.add(websitePanel);
+        panel.add(usernamePanel);
+        panel.add(passwordPanel);
+        panel.add(buttonsPanel);
+        this.add(panel, BorderLayout.SOUTH);
     }
 
     public void setWebsitePanel(){
-        this.websitePanel.setLayout(new BorderLayout());
-        this.websitePanel.add(websiteLabel, BorderLayout.NORTH);
-        this.websitePanel.add(website, BorderLayout.SOUTH);
+        this.websitePanel.setLayout(new GridLayout(2, 1));
+        this.websitePanel.add(websiteLabel);
+        this.websitePanel.add(website);
     }
 
     public void setUsernamePanel(){
-        this.usernamePanel.setLayout(new BorderLayout());
-        this.usernamePanel.add(usernameLabel, BorderLayout.NORTH);
-        this.usernamePanel.add(username, BorderLayout.SOUTH);
+        this.usernamePanel.setLayout(new GridLayout(2, 1));
+        this.usernamePanel.add(usernameLabel);
+        this.usernamePanel.add(username);
     }
 
     public void setPasswordPanel(){
-        this.passwordPanel.setLayout(new BorderLayout());
-        this.passwordPanel.add(passwordLabel, BorderLayout.NORTH);
-        this.passwordPanel.add(password, BorderLayout.CENTER);
-        this.passwordPanel.add(generateNewPassword, BorderLayout.SOUTH);
+        this.passwordPanel.setLayout(new GridLayout(3, 1));
+        this.passwordPanel.add(passwordLabel);
+        this.passwordPanel.add(password);
+        this.passwordPanel.add(generateNewPassword);
     }
 
     public void setButtonsPanel(){
-        this.buttonsPanel.setLayout(new BorderLayout());
-        this.buttonsPanel.add(save, BorderLayout.WEST);
-        this.buttonsPanel.add(cancel, BorderLayout.EAST);
+        this.buttonsPanel.setLayout(new GridLayout(1, 2));
+        this.buttonsPanel.add(save);
+        this.buttonsPanel.add(cancel);
     }
 
     public JTextField getWebsite() {
