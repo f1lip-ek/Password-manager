@@ -81,9 +81,9 @@ public class SwitchingPanels extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt"));
-                    BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt"));
-                    BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt"));
+                    BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt", true));
+                    BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt", true));
+                    BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt", true));
 
 
                     bw1.newLine();
@@ -101,8 +101,11 @@ public class SwitchingPanels extends JPanel {
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
-                listOfPasswords.getList_of_password().addPassword();
-                listOfPasswords.getList_of_password().setScrollPane();
+                listOfPasswords.getList_of_password().addNewPassword(
+                        newPassword.getWebsite().getText(),
+                        newPassword.getUsername().getText(),
+                        newPassword.getPassword().getText()
+                );
                 cardLayout.show(SwitchingPanels.this, "Panel1");
             }
         });

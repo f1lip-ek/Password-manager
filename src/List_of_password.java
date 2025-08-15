@@ -19,7 +19,7 @@ public class List_of_password extends JScrollPane {
     int preferredScrollPanelHeight = (VISIBLE_PANEL_COUNT * PANEL_HEIGHT) +
             ((VISIBLE_PANEL_COUNT - 1) * VERTICAL_STRUT_HEIGHT) + 20; // Přidáme trochu místa navíc pro okraj
 
-    private final JPanel mainPanel;
+    public final JPanel mainPanel;
     private final ArrayList<Password> list;
 
     public List_of_password() {
@@ -56,27 +56,40 @@ public class List_of_password extends JScrollPane {
             while ((line = br1.readLine()) != null) {
                 passwords.add(line);
             }
+            br1.close();
 
             BufferedReader br2 = new BufferedReader(new FileReader("res\\usernames.txt"));
             String line2;
             while ((line2 = br2.readLine()) != null) {
                 usernames.add(line2);
             }
+            br2.close();
 
             BufferedReader br3 = new BufferedReader(new FileReader("res\\websites.txt"));
             String line3;
             while ((line3 = br3.readLine()) != null) {
                 websites.add(line3);
             }
+            br3.close();
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        setScrollPane();
         int lenght = websites.size();
         for (int i = 0; i < lenght; i++) {
-            this.add(new Password(websites.get(i), usernames.get(i), passwords.get(i)));
+            this.list.add(new Password(websites.get(i), usernames.get(i), passwords.get(i)));
         }
         setScrollPane();
         System.out.println(passwords +"\n"+ usernames +"\n"+ websites);
+    }
+
+    // Method to add a single new password and then update the UI
+    public void addNewPassword(String website, String username, String password) {
+        // Add the new password to the main list of the class
+        this.list.add(new Password(website, username, password));
+
+        // Update the UI
+        setScrollPane();
     }
 }
