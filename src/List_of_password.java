@@ -84,12 +84,9 @@ public class List_of_password extends JScrollPane {
         System.out.println(passwords +"\n"+ usernames +"\n"+ websites);
     }
 
-    // Method to add a single new password and then update the UI
     public void addNewPassword(String website, String username, String password) {
-        // Add the new password to the main list of the class
         this.list.add(new Password(website, username, password));
 
-        // Update the UI
         setScrollPane();
     }
 }
