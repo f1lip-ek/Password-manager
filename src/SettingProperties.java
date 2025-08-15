@@ -12,11 +12,11 @@ public class SettingProperties extends JPanel {
     private final JCheckBox numbers;
     private final JCheckBox special;
     private final JTextField length;
-    private final JLabel napis;
+    private final JLabel title;
     private final RandomGenerator rg;
 
     public SettingProperties() {
-        this.napis = new JLabel("Password generator");
+        this.title = new JLabel("Password generator");
         generatePassword = new JButton("Generate password");
         cancel = new JButton("Cancel");
         this.upperCase = new JCheckBox("Upper case");
@@ -27,7 +27,7 @@ public class SettingProperties extends JPanel {
         rg = new RandomGenerator();
         this.setLayout(new BorderLayout());
         setPanelCheckBoxes();
-        setPanelLenght();
+        setPanelLength();
         setPanelButton();
     }
 
@@ -43,10 +43,10 @@ public class SettingProperties extends JPanel {
         setDefault();
     }
 
-    public void setPanelLenght(){
+    public void setPanelLength(){
         JPanel panel1 = new JPanel();
         panel1.setLayout(new BorderLayout());
-        panel1.add(napis, BorderLayout.NORTH);
+        panel1.add(title, BorderLayout.NORTH);
         panel1.add(length, BorderLayout.SOUTH);
         this.add(panel1, BorderLayout.NORTH);
         this.length.addKeyListener(new KeyAdapter() {
@@ -68,22 +68,22 @@ public class SettingProperties extends JPanel {
     }
 
     public void setParameters(){
-        this.upperCase.addActionListener(e -> {
+        this.upperCase.addActionListener(_ -> {
             if (upperCase.isSelected()) {
                 RandomGenerator.user.setUpperCase(true);
             }
         });
-        this.lowerCase.addActionListener(e -> {
+        this.lowerCase.addActionListener(_ -> {
             if (lowerCase.isSelected()) {
                 RandomGenerator.user.setLowerCase(true);
             }
         });
-        this.numbers.addActionListener(e -> {
+        this.numbers.addActionListener(_ -> {
             if (numbers.isSelected()) {
                 RandomGenerator.user.setNumbers(true);
             }
         });
-        this.special.addActionListener(e -> {
+        this.special.addActionListener(_ -> {
             if (special.isSelected()) {
                 RandomGenerator.user.setSpecial(true);
             }
