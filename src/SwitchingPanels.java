@@ -59,6 +59,22 @@ public class SwitchingPanels extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 RandomGenerator.password = "";
 
+                cardLayout.show(SwitchingPanels.this, "Panel2");
+            }
+        });
+
+        GeneratedPassword.regeneratePassword.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                settingProperties.getRg().generatePassword();
+                generatedPassword.password.setText(RandomGenerator.password);
+            }
+        });
+
+        GeneratedPassword.goBackAndFillItInCollum.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                newPassword.getPassword().setText(RandomGenerator.password);
                 cardLayout.show(SwitchingPanels.this, "Panel4");
             }
         });

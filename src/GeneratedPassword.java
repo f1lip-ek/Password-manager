@@ -10,6 +10,8 @@ public class GeneratedPassword extends JPanel {
     private final JLabel label;
     public JTextField password;
     public static JButton goBack;
+    public static JButton goBackAndFillItInCollum;
+    public static JButton regeneratePassword;
     private final JButton copyToClipboard;
     private final JPanel panel;
 
@@ -18,7 +20,9 @@ public class GeneratedPassword extends JPanel {
         goBack =  new JButton("Go Back");
         this.label = new JLabel("Generated password:");
         this.password = new JTextField("act");
-        copyToClipboard = new JButton("Copy to clipboard");
+        this.copyToClipboard = new JButton("Copy to clipboard");
+        regeneratePassword = new JButton("Regenerate password");
+        goBackAndFillItInCollum = new JButton("Go Back and fill it in collum");
         setPanel();
         this.setLayout(new BorderLayout());
         this.setSize(250, 250);
@@ -38,14 +42,16 @@ public class GeneratedPassword extends JPanel {
 
     public void setButtons(){
         setCopyButton();
-        this.panel.setLayout(new GridLayout(2, 1));
+        this.panel.setLayout(new GridLayout(4, 1));
         this.panel.add(copyToClipboard);
+        this.panel.add(regeneratePassword);
         this.panel.add(goBack);
+        this.panel.add(goBackAndFillItInCollum);
         this.add(this.panel, BorderLayout.SOUTH);
     }
 
     public void setCopyButton(){
-        copyToClipboard.addActionListener(new ActionListener() {
+        this.copyToClipboard.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StringSelection stringSelection = new StringSelection(RandomGenerator.password);

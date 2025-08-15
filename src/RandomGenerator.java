@@ -17,6 +17,7 @@ public class RandomGenerator {
     }
 
     public void generatePassword() {
+        password = "";
         setNumOfCategories();
         for (int i = 0; i < user.getLength(); i++) {
             this.randomNum = rd.nextInt(numOfCategories);
