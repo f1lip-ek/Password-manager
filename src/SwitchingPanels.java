@@ -122,9 +122,9 @@ public class SwitchingPanels extends JPanel {
 
     public void fileWriting(){
         try{
-            BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt"/*, true*/));
-            BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt"/*, true*/));
-            BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt"/*, true*/));
+            BufferedWriter bw1 = new BufferedWriter(new FileWriter("res\\websites.txt", true));
+            BufferedWriter bw2 = new BufferedWriter(new FileWriter("res\\usernames.txt", true));
+            BufferedWriter bw3 = new BufferedWriter(new FileWriter("res\\passwords.txt", true));
 
 
             bw1.newLine();
