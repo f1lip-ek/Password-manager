@@ -50,6 +50,7 @@ public class SwitchingPanels extends JPanel {
         SettingProperties.cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                settingProperties.getLength().setText("");
                 cardLayout.show(SwitchingPanels.this, "Panel4");
             }
         });
@@ -96,6 +97,9 @@ public class SwitchingPanels extends JPanel {
         NewPassword.cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                newPassword.getWebsite().setText("");
+                newPassword.getUsername().setText("");
+                newPassword.getPassword().setText("");
                 cardLayout.show(SwitchingPanels.this, "Panel1");
             }
         });

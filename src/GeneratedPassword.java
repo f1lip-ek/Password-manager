@@ -17,19 +17,18 @@ public class GeneratedPassword extends JPanel {
 
     public GeneratedPassword() {
         this.panel = new JPanel();
-        goBack =  new JButton("Go Back");
+        goBack =  new JButton("Go Back to set different properties");
         this.label = new JLabel("Generated password:");
         this.password = new JTextField("act");
         this.copyToClipboard = new JButton("Copy to clipboard");
         regeneratePassword = new JButton("Regenerate password");
-        goBackAndFillItInCollum = new JButton("Go Back and fill it in collum");
+        goBackAndFillItInCollum = new JButton("Go Back and fill it in password collum");
         setPanel();
         this.setLayout(new BorderLayout());
         this.setSize(250, 250);
         this.add(this.label, BorderLayout.NORTH);
         this.add(this.password, BorderLayout.CENTER);
         setButtons();
-        //this.pack();
     }
 
     public void setPanel() {

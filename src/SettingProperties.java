@@ -16,7 +16,7 @@ public class SettingProperties extends JPanel {
     private final RandomGenerator rg;
 
     public SettingProperties() {
-        this.title = new JLabel("Password generator");
+        this.title = new JLabel("Length of password:");
         generatePassword = new JButton("Generate password");
         cancel = new JButton("Cancel");
         this.upperCase = new JCheckBox("Upper case");
