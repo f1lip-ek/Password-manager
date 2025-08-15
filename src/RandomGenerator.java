@@ -1,6 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Random;
 
 public class RandomGenerator {
@@ -25,13 +22,6 @@ public class RandomGenerator {
             this.randomNum = rd.nextInt(numOfCategories);
             categoryChecker();
         }
-        /*try (BufferedWriter writer = new BufferedWriter(new FileWriter("res\\passwords.txt", true))){
-            writer.newLine();
-            writer.write(password);
-            writer.flush();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }*/
         System.out.println(password);
     }
 
