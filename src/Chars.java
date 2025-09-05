@@ -7,9 +7,9 @@ public class Chars {
     /**
      *  1. Array with small and big letters
      */
-    private final char[] lowerCaseAlphabet; // 26 malých
+    private final char[] lowerCaseAlphabet; // 26 lowercase letters
 
-    private final char[] upperCaseAlphabet; // 26 velkych
+    private final char[] upperCaseAlphabet; // 26 uppercase letters
 
     /**
      * 2. Array with numbers 0-9
@@ -37,8 +37,8 @@ public class Chars {
      */
     public void setChars() {
         for (int i = 0; i < 26; i++) {
-            lowerCaseAlphabet[i] = (char) ('a' + i);         // malé znaky a-z
-            upperCaseAlphabet[i] = (char) ('A' + i);     // velké znaky A-Z
+            lowerCaseAlphabet[i] = (char) ('a' + i);         // lowercase letters a-z
+            upperCaseAlphabet[i] = (char) ('A' + i);     // uppercase letters A-Z
         }
 
         for (int i = 0; i < 10; i++) {
@@ -62,7 +62,7 @@ public class Chars {
         return upperCaseAlphabet;
     }
 
-    public char getRandomChar(char[] znak){
-        return znak[rd.nextInt(znak.length)];
+    public char getRandomChar(char[] character){
+        return character[rd.nextInt(character.length)];
     }
 }

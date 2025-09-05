@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,108 +33,69 @@ public class SwitchingPanels extends JPanel {
     }
 
     public void act(){
-        SettingProperties.generatePassword.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!settingProperties.getLength().getText().isEmpty() && RandomGenerator.user.isSelected()){
-                    RandomGenerator.user.setLength(Integer.parseInt(settingProperties.getLength().getText()));
-                    RandomGenerator.user.setUpperCase(settingProperties.getUpperCase().isSelected());
-                    RandomGenerator.user.setLowerCase(settingProperties.getLowerCase().isSelected());
-                    RandomGenerator.user.setNumbers(settingProperties.getNumbers().isSelected());
-                    RandomGenerator.user.setSpecial(settingProperties.getSpecial().isSelected());
-                    settingProperties.getRg().generatePassword();
-                    generatedPassword.password.setText(RandomGenerator.password);
-
-                    cardLayout.show(SwitchingPanels.this, "Panel3");
-                }
-            }
-        });
-
-        SettingProperties.cancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                settingProperties.getLength().setText("");
-                cardLayout.show(SwitchingPanels.this, "Panel4");
-            }
-        });
-
-        GeneratedPassword.goBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RandomGenerator.password = "";
-
-                cardLayout.show(SwitchingPanels.this, "Panel2");
-            }
-        });
-
-        GeneratedPassword.regeneratePassword.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        SettingProperties.generatePassword.addActionListener(_ -> {
+            if (!settingProperties.getLength().getText().isEmpty() && RandomGenerator.user.isSelected()){
+                RandomGenerator.user.setLength(Integer.parseInt(settingProperties.getLength().getText()));
+                RandomGenerator.user.setUpperCase(settingProperties.getUpperCase().isSelected());
+                RandomGenerator.user.setLowerCase(settingProperties.getLowerCase().isSelected());
+                RandomGenerator.user.setNumbers(settingProperties.getNumbers().isSelected());
+                RandomGenerator.user.setSpecial(settingProperties.getSpecial().isSelected());
                 settingProperties.getRg().generatePassword();
                 generatedPassword.password.setText(RandomGenerator.password);
+
+                cardLayout.show(SwitchingPanels.this, "Panel3");
             }
         });
 
-        GeneratedPassword.goBackAndFillItInCollum.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newPassword.getPassword().setText(RandomGenerator.password);
-                cardLayout.show(SwitchingPanels.this, "Panel4");
-            }
+        SettingProperties.cancel.addActionListener(_ -> {
+            settingProperties.getLength().setText("");
+            cardLayout.show(SwitchingPanels.this, "Panel4");
         });
 
-        ListOfPasswords.newPassword.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(SwitchingPanels.this, "Panel4");
-            }
+        GeneratedPassword.goBack.addActionListener(_ -> {
+            RandomGenerator.password = "";
+
+            cardLayout.show(SwitchingPanels.this, "Panel2");
         });
 
-        NewPassword.generateNewPassword.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(SwitchingPanels.this, "Panel2");
-            }
+        GeneratedPassword.regeneratePassword.addActionListener(_ -> {
+            settingProperties.getRg().generatePassword();
+            generatedPassword.password.setText(RandomGenerator.password);
         });
 
-        NewPassword.cancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-
-                newPassword.getWebsite().setText("");
-                newPassword.getUsername().setText("");
-                newPassword.getPassword().setText("");
-                reloadList();
-                cardLayout.show(SwitchingPanels.this, "Panel1");
-            }
+        GeneratedPassword.goBackAndFillItInCollum.addActionListener(_ -> {
+            newPassword.getPassword().setText(RandomGenerator.password);
+            cardLayout.show(SwitchingPanels.this, "Panel4");
         });
 
-        NewPassword.save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        ListOfPasswords.newPassword.addActionListener(_ -> cardLayout.show(SwitchingPanels.this, "Panel4"));
 
+        NewPassword.generateNewPassword.addActionListener(_ -> cardLayout.show(SwitchingPanels.this, "Panel2"));
 
-                fileWriting();
+        NewPassword.cancel.addActionListener(_ -> {
+            newPassword.getWebsite().setText("");
+            newPassword.getUsername().setText("");
+            newPassword.getPassword().setText("");
+            reloadList();
+            cardLayout.show(SwitchingPanels.this, "Panel1");
+        });
 
-                listOfPasswords.getList_of_password().addNewPassword(
-                        newPassword.getWebsite().getText(),
-                        newPassword.getUsername().getText(),
-                        newPassword.getPassword().getText()
-                );
-                reloadList();
-                cardLayout.show(SwitchingPanels.this, "Panel1");
-            }
+        NewPassword.save.addActionListener(_ -> {
+
+            fileWriting();
+
+            listOfPasswords.getList_of_password().addNewPassword(
+                    newPassword.getWebsite().getText(),
+                    newPassword.getUsername().getText(),
+                    newPassword.getPassword().getText()
+            );
+            reloadList();
+            cardLayout.show(SwitchingPanels.this, "Panel1");
         });
 
         reloadList();
 
-        PasswordView.back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(SwitchingPanels.this, "Panel1");
-            }
-        });
+        PasswordView.back.addActionListener(_ -> cardLayout.show(SwitchingPanels.this, "Panel1"));
     }
 
     public void fileWriting(){
@@ -175,13 +134,10 @@ public class SwitchingPanels extends JPanel {
         for (int i = 0; i < List_of_password.list.size(); i++) {
             List_of_password.list.get(i).setItemIndex(i);
             int iFor = i;
-            List_of_password.list.get(i).addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    SwitchingPanels.index = List_of_password.list.get(iFor).getItemIndex();
-                    setPasswordView();
-                    cardLayout.show(SwitchingPanels.this, "Panel5");
-                }
+            List_of_password.list.get(i).addActionListener(_ -> {
+                SwitchingPanels.index = List_of_password.list.get(iFor).getItemIndex();
+                setPasswordView();
+                cardLayout.show(SwitchingPanels.this, "Panel5");
             });
         }
     }

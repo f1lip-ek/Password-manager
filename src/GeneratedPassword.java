@@ -2,12 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GeneratedPassword extends JPanel {
 
-    private final JLabel label;
     public JTextField password;
     public static JButton goBack;
     public static JButton goBackAndFillItInCollum;
@@ -18,7 +15,6 @@ public class GeneratedPassword extends JPanel {
     public GeneratedPassword() {
         this.panel = new JPanel();
         goBack =  new JButton("Go Back to set different properties");
-        this.label = new JLabel("Generated password:");
         this.password = new JTextField("act");
         this.copyToClipboard = new JButton("Copy to clipboard");
         regeneratePassword = new JButton("Regenerate password");
@@ -26,7 +22,7 @@ public class GeneratedPassword extends JPanel {
         setPanel();
         this.setLayout(new BorderLayout());
         this.setSize(250, 250);
-        this.add(this.label, BorderLayout.NORTH);
+        this.add(new JLabel("Generated password:"), BorderLayout.NORTH);
         this.add(this.password, BorderLayout.CENTER);
         setButtons();
     }
@@ -50,15 +46,12 @@ public class GeneratedPassword extends JPanel {
     }
 
     public void setCopyButton(){
-        this.copyToClipboard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                StringSelection stringSelection = new StringSelection(RandomGenerator.password);
+        this.copyToClipboard.addActionListener(_ -> {
+            StringSelection stringSelection = new StringSelection(RandomGenerator.password);
 
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-                clipboard.setContents(stringSelection, null);
-            }
+            clipboard.setContents(stringSelection, null);
         });
     }
 
