@@ -1,15 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Password extends JPanel {
+public class Password extends JButton {
 
     private final String website;
     private final String username;
     private final String password;
+    private int itemIndex;
 
     public Password(String website, String username, String password) {
         this.website = website;
@@ -31,22 +30,32 @@ public class Password extends JPanel {
     }
 
     public void setEvent(){
-        this.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if(SwingUtilities.isLeftMouseButton(e)){
-                        JOptionPane.showMessageDialog(null, "Website: " + website + "\nUsername: " + username + "\nPassword: " + password);
-                    }
-                }
-            }
-        );
-        this.addKeyListener(new KeyAdapter() {
+        this.addActionListener(new ActionListener() {
             @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    System.out.println("karel");
-                }
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("jsi blbej");
             }
+            
         });
+    }
+
+    public String getWebsite(){
+        return website;
+    }
+
+    public String getUsername(){
+        return username;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public int getItemIndex() {
+        return itemIndex;
+    }
+
+    public void setItemIndex(int itemIndex) {
+        this.itemIndex = itemIndex;
     }
 }

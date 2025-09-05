@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class ListOfPasswords extends JPanel {
 
-    private final List_of_password listOfPasswords;
+    public final List_of_password listOfPasswords;
     public static JButton newPassword;
 
     public ListOfPasswords() {

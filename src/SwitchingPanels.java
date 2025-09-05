@@ -12,19 +12,24 @@ public class SwitchingPanels extends JPanel {
     private final SettingProperties settingProperties; //Panel2
     private final GeneratedPassword generatedPassword; //Panel3
     private final NewPassword newPassword; //Panel4
+    private final PasswordView passwordView; //Panel5
     private final CardLayout cardLayout;
+
+    public static int index = 0;
 
     public SwitchingPanels() {
         this.settingProperties = new SettingProperties();
         this.generatedPassword = new GeneratedPassword();
         this.listOfPasswords = new ListOfPasswords();
         this.newPassword = new NewPassword();
+        this.passwordView = new PasswordView();
         this.cardLayout = new CardLayout();
         this.setLayout(cardLayout);
         this.add(listOfPasswords, "Panel1");
         this.add(settingProperties, "Panel2");
         this.add(generatedPassword, "Panel3");
         this.add(newPassword, "Panel4");
+        this.add(passwordView, "Panel5");
         this.cardLayout.show(this, "Panel1");
         act();
     }
@@ -97,9 +102,12 @@ public class SwitchingPanels extends JPanel {
         NewPassword.cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+
                 newPassword.getWebsite().setText("");
                 newPassword.getUsername().setText("");
                 newPassword.getPassword().setText("");
+                reloadList();
                 cardLayout.show(SwitchingPanels.this, "Panel1");
             }
         });
@@ -108,6 +116,7 @@ public class SwitchingPanels extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
                 fileWriting();
 
                 listOfPasswords.getList_of_password().addNewPassword(
@@ -115,6 +124,16 @@ public class SwitchingPanels extends JPanel {
                         newPassword.getUsername().getText(),
                         newPassword.getPassword().getText()
                 );
+                reloadList();
+                cardLayout.show(SwitchingPanels.this, "Panel1");
+            }
+        });
+
+        reloadList();
+
+        PasswordView.back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 cardLayout.show(SwitchingPanels.this, "Panel1");
             }
         });
@@ -141,6 +160,29 @@ public class SwitchingPanels extends JPanel {
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setPasswordView(){
+        passwordView.removeAll();
+        passwordView.setWebsitePanel();
+        passwordView.setUsernamePanel();
+        passwordView.setPasswordPanel();
+        passwordView.add(PasswordView.back);
+    }
+
+    public void reloadList(){
+        for (int i = 0; i < List_of_password.list.size(); i++) {
+            List_of_password.list.get(i).setItemIndex(i);
+            int iFor = i;
+            List_of_password.list.get(i).addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    SwitchingPanels.index = List_of_password.list.get(iFor).getItemIndex();
+                    setPasswordView();
+                    cardLayout.show(SwitchingPanels.this, "Panel5");
+                }
+            });
         }
     }
 
