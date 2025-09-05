@@ -26,17 +26,6 @@ public class Password extends JButton {
         label.setForeground(Color.BLACK);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(label, BorderLayout.NORTH);
-        setEvent();
-    }
-
-    public void setEvent(){
-        this.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("jsi blbej");
-            }
-            
-        });
     }
 
     public String getWebsite(){
